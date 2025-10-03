@@ -11,6 +11,7 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY --from=builder /app/.venv /app/.venv
 COPY cc_simple_server/ ./cc_simple_server/
+COPY --from=builder /app/tests ./tests
 RUN mkdir /app/data
 RUN useradd -m appuser && chown -R appuser:appuser /app
 USER appuser
